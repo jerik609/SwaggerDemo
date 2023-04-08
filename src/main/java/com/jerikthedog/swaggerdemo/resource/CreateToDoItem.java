@@ -12,7 +12,7 @@ public class CreateToDoItem {
 
     @PostMapping(value = "/todos")
     @Operation(
-            tags = {"TodoItems"} // places the endpoint inside a tag (category)
+            tags = {"TodoItems", "Modifiers"} // places the endpoint inside a tag (category)
     )
     public ResponseEntity<Object> createToDoItem(@RequestBody ToDoItem toDoItem) {
         return ResponseEntity.ok().body(toDoItem);

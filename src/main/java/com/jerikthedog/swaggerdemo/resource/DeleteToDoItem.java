@@ -11,7 +11,7 @@ public class DeleteToDoItem {
 
     @DeleteMapping(value = "/todos/{toDoItemId}")
     @Operation(
-            tags = {"TodoItems"} // places the endpoint inside a tag (category)
+            tags = {"TodoItems", "Modifiers"} // places the endpoint inside a tag (category)
     )
     public ResponseEntity<Object> deleteToDoItem(@PathVariable String toDoItemId) {
         return ResponseEntity.ok().body("ToDo Item Deleted");
