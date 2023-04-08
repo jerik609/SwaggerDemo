@@ -2,6 +2,8 @@ package com.jerikthedog.swaggerdemo.resource;
 
 import com.jerikthedog.swaggerdemo.model.ToDoItem;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +15,12 @@ public class GetAllToDoItems {
 
     @GetMapping(value = "todos")
     @Operation(
-            tags = {"TodoItems"} // places the endpoint inside a tag (category)
+            tags = {"TodoItems"}, // places the endpoint inside a tag (category)
+            security = {
+                    // if we want to use the globally defined authentication mechanism,
+                    // otherwise we must spefcify the details
+                    @SecurityRequirement(name = "BearerJWT")
+            }
     )
     public ResponseEntity<Object> getAllToDoItems(Boolean isCompleted) {
         ArrayList<ToDoItem> toDoItems = new ArrayList<>();

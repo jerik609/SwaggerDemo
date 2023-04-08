@@ -1,8 +1,12 @@
 package com.jerikthedog.swaggerdemo;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
@@ -33,6 +37,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 				@Tag(name = "TodoItems", description = "All the operations for TODOs"),
 				@Tag(name = "Modifiers", description = "These endpoints are used to modify the TODOs")
 		}
+)
+@SecurityScheme(
+		name = "BearerJWT",
+		type = SecuritySchemeType.HTTP,
+		scheme = "bearer",
+		in = SecuritySchemeIn.COOKIE,
+		bearerFormat = "JWT",
+		description = "Bearer token"
 )
 public class SwaggerDemoApplication {
 
