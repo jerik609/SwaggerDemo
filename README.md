@@ -14,3 +14,34 @@
 
 # THERE'S A REACTIVE STARTER TOO !!
 
+## Swagger
+Just look in the code for actual annotation usage.
+
+The `OpenAPIDefinition` is the main annotation, defines global properties, is set on the "main" entrypoint, i.e.:
+```
+@SpringBootApplication
+@OpenAPIDefinition(
+    ...
+)
+public class SwaggerDemoApplication {
+    ...
+}
+```
+
+In default settings, endpoints are each in its own category, despite using the same model, that's not ideal.
+
+We can describe the individual settings, using the `@Operation` annotation, e.g.:
+```
+@RestController
+public class UpdateToDoItem {
+    
+    @PutMapping(value = "/todos/{toDoItemId}")
+    @Operation(
+        ...
+    )
+    
+    ...
+        
+}
+```
+
